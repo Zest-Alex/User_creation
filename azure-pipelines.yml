@@ -10,10 +10,14 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+- task: PowerShellOnTargetMachines@3
+  inputs:
+    Machines: '10.0.0.6:5986'
+    UserName: 'Cropp-HV.local\administrator'
+    UserPassword: 'CroppAdm1!'
+    InlineScript: |
+      # Write your powershell commands here.
+      
+      Write-Output "Hello World"
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+
